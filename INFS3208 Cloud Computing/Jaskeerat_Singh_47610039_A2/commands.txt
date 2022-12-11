@@ -1,0 +1,5 @@
+Setup the git folder => git clone https://github.com/csenw/cca2.git && cd cca2
+
+write docker-compose.yml here
+
+run the command => docker-compose -f docker-compose.yml up -d

@@ -1,0 +1,9 @@
+Clone a git repositery using command- git clone https://github.com/csenw/cca1.git
+Change the directory - cd cca1
+Here we will build our dockerfile and mount the "src" folder
+
+TO BUILD:
+docker build --build-arg PHPVER=7.4 --build-arg TimeZone=australia -t a1:singh -f dockerfile .
+
+TO RUN:
+docker run --name cca1_nginx_php -v $PWD/src:/var/www/html -p 80:80 -d a1:singh
