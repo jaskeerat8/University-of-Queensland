@@ -1,0 +1,33 @@
+--------Copying the docker files from github (Modified version of Prac 8 docker file, referenced in proposal)--------
+
+mkdir $HOME/individual_assignment && cd $HOME/individual_assignment
+git clone https://github.com/jaskeerat8/Cloud-individual-assignment/
+sudo apt install unzip
+unzip -j Cloud-individual-assignment/project.zip
+rm -rf Cloud-individual-assignment/
+mkdir $PWD/nbs && mv Airline_Delay_Cause.csv $PWD/nbs && mv 'individual assignment.ipynb' $PWD/nbs
+sudo chmod -R 777 $PWD/nbs
+
+
+--------Run docker compose file--------
+sudo docker-compose up -d
+
+
+--------opening HDFS name node to put file in HDFS--------
+sudo docker exec -it namenode bash
+hdfs dfs -mkdir /datasets/
+hdfs dfs -put /home/nbs/Airline_Delay_Cause.csv /datasets/Airline_Delay_Cause.csv
+
+
+--------File location to be mentioned in the Jupyter notebook--------
+hdfs://namenode:8020/datasets/Airline_Delay_Cause.csv
+
+
+--------Checking HDFS Node health and putting file in HDFS--------
+<External IP>:4040
+
+--------Opening Jupyter Location and running ipynb file--------
+<External IP>:8888
+
+--------Checking spark page and checking worker nodes--------
+<External IP>:8080
